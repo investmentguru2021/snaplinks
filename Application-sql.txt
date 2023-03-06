@@ -1,0 +1,42 @@
+DROP TABLE snaplink.USER_DETAIL;
+   CREATE TABLE snaplink.USER_DETAIL 
+   (	
+   		USER_DETAIL_ID NUMERIC(10,0), 
+		SOEID VARCHAR(255), 
+        EMPNAME VARCHAR(255),
+        EMAILID VARCHAR(255), 
+		PASSWORD VARCHAR(255),
+	    CREATE_DATE TIMESTAMP,
+        UPDATE_DATE TIMESTAMP,
+       primary key (USER_DETAIL_ID)
+   ) ;
+  
+   
+ DROP TABLE snaplink.USER_LINKS;
+ CREATE TABLE snaplink.USER_LINKS 
+   (	
+   	USER_LINKS_ID NUMERIC(10,0),
+		LINK_DESCRIPTION  VARCHAR(1000),
+		LINK_TAGS VARCHAR(255),
+		KEYWORDS VARCHAR(1000),
+		URL VARCHAR(255),
+		TYPE VARCHAR(255),
+		SOEID VARCHAR(10),
+		CREATE_DATE TIMESTAMP,
+		LAST_ACCESS_DATE TIMESTAMP,
+       primary key (USER_LINKS_ID)
+   ) ;
+   
+   
+   INSERT INTO `snaplink`.`user_links`
+(`USER_LINKS_ID`,
+`LINK_DESCRIPTION`,
+`LINK_TAGS`,
+`KEYWORDS`,
+`URL`,
+`TYPE`,
+`SOEID`,
+`CREATE_DATE`,
+`LAST_ACCESS_DATE`)
+VALUES
+(4,'Test Link Mukul 2','#Mukul1 #Mukul2 #Mukul4','#Keyword1  #Keyword2 #Keyword4','https//mukulrandomur4.com','public','mr15993','2023-02-08 15:00:19','2023-02-08 15:00:19')
