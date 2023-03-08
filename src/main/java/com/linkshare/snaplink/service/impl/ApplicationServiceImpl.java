@@ -1,9 +1,12 @@
 package com.linkshare.snaplink.service.impl;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -78,23 +81,27 @@ public class ApplicationServiceImpl implements ApplicationService {
 	public void searchForUserLinks(UIObjectVO uiObject) {
 		LOG.info(" We have fetched  the username from the DB");
 		List<UserLinks> userLinksList= null;
+		String linkType = "shared";
 		
-		if(uiObject.getSearchQuery()!=null && uiObject.getSearchQuery().length()>1) {
-			if(uiObject.getSearchQuery().startsWith("#")) {
-				userLinksList= applicationDao.searchForUserLinksWithTags(uiObject.getSearchQuery(), "shared");
-			}else {
-				userLinksList= applicationDao.searchForUserLinks(uiObject.getSearchQuery(), "shared");	
+		
+		if(!StringUtils.isEmpty(uiObject.getSoeId())){
+			if(!StringUtils.isEmpty(uiObject.getMyLinksCheck()) && uiObject.getMyLinksCheck().equalsIgnoreCase("true")) {
+				userLinksList= applicationDao.searchForMyLinks(uiObject.getSoeId());	
 			}
-			
+			else if(uiObject.getSearchQuery()!=null && uiObject.getSearchQuery().length()>1) {
+				if(uiObject.getSearchQuery().startsWith("#")) {
+					userLinksList= applicationDao.searchForUserLinksWithTags(uiObject.getSearchQuery().trim(), linkType);
+				}else {
+					
+					userLinksList= applicationDao.searchForUserLinks(uiObject.getSearchQuery().trim(), linkType);	
+				}
+			}else if(StringUtils.isEmpty(uiObject.getSearchQuery()) && linkType.equalsIgnoreCase("shared")) {
+				userLinksList= applicationDao.searchForUserLinksBasedonType(linkType);
+			}	
 		}
-		else if(uiObject.getMyLinks().equalsIgnoreCase("Y")) {
-			userLinksList= applicationDao.searchForMyLinks(uiObject.getSoeId());	
-		}
-		
-		
 		
 			if(userLinksList!=null && !userLinksList.isEmpty()) {
-				uiObject.setUserLinks(userLinksList);
+				uiObject.setUserLinks(userLinksList.stream().sorted(Comparator.comparing(UserLinks::getCreateDate).reversed()).collect(Collectors.toList()));
 			}else {
 				userLinksList= new ArrayList<UserLinks>();  
 				uiObject.setUserLinks(userLinksList);
@@ -146,7 +153,7 @@ public class ApplicationServiceImpl implements ApplicationService {
 				userLinks = new UserLinks();
 				userLinks.setSoeId(uiObject.getSoeId());
 				userLinks.setUserLinkDescription(uiObject.getDescription());
-				userLinks.setType(uiObject.getType());
+				userLinks.setType(uiObject.getShared().equalsIgnoreCase("true")?"shared":"private");
 				userLinks.setUrl(uiObject.getUrl());
 				userLinks.setUserLinkTags(uiObject.getTags());
 				userLinks.setCreateDate(new Date());

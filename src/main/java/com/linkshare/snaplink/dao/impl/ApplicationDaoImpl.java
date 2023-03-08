@@ -15,7 +15,6 @@ import org.springframework.stereotype.Repository;
 import com.linkshare.snaplink.dao.ApplicationDao;
 import com.linkshare.snaplink.entity.UserDetails;
 import com.linkshare.snaplink.entity.UserLinks;
-import com.linkshare.snaplink.vo.UIObjectVO;
 
 
 
@@ -83,6 +82,31 @@ public class ApplicationDaoImpl extends AbstractDao implements ApplicationDao{
 		return userLinksList;
 	}
 	
+	
+	/**
+	 * Search for user links basedon type.
+	 *
+	 * @param type the type
+	 * @return the list
+	 */
+	public List<UserLinks> searchForUserLinksBasedonType(String type) {
+		List<UserLinks> userLinksList = null;
+		try {
+				// Create CriteriaBuilder
+				CriteriaBuilder builder = getSession().getCriteriaBuilder();
+				CriteriaQuery<UserLinks> criteria = builder.createQuery(UserLinks.class);
+				Root<UserLinks> myObjectRoot = criteria.from(UserLinks.class);
+				Predicate[] predicates = new Predicate[1];
+				predicates[0] = builder.equal(myObjectRoot.get("type"),type);
+			     criteria.select(myObjectRoot).where(predicates);
+			    Query<UserLinks> query = getSession().createQuery(criteria);
+			    userLinksList=query.getResultList();
+			}catch(Exception ex) {
+				LOG.error("Exception while getting user links table based on type",ex);
+			}
+		return userLinksList;
+	}
+	
 	/**
 	 * Search for user links with tags.
 	 *
@@ -98,7 +122,7 @@ public class ApplicationDaoImpl extends AbstractDao implements ApplicationDao{
 				CriteriaQuery<UserLinks> criteria = builder.createQuery(UserLinks.class);
 				Root<UserLinks> myObjectRoot = criteria.from(UserLinks.class);
 				Predicate[] predicates = new Predicate[2];
-				predicates[0] = builder.like(myObjectRoot.get("userLinkTags"),"%"+tags);
+				predicates[0] = builder.like(myObjectRoot.get("userLinkTags"),"%"+tags+"%");
 				predicates[1] = builder.equal(myObjectRoot.get("type"),type);
 			     criteria.select(myObjectRoot).where(predicates);
 			    Query<UserLinks> query = getSession().createQuery(criteria);

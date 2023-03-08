@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.linkshare.snaplink.entity.UserDetails;
 import com.linkshare.snaplink.entity.UserLinks;
-import com.linkshare.snaplink.vo.UIObjectVO;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -57,6 +56,15 @@ public interface ApplicationDao {
 	 * @return the user links
 	 */
 	public UserLinks saveUserLink(UserLinks userLink) ;
+	
+	
+	/**
+	 * Search for user links basedon type.
+	 *
+	 * @param type the type
+	 * @return the list
+	 */
+	public List<UserLinks> searchForUserLinksBasedonType(String type) ;
 	
 	
 }

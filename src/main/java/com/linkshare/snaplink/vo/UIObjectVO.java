@@ -46,15 +46,15 @@ public class UIObjectVO implements Serializable{
 	
 	/** The public links. */
 	@JsonView(Views.Public.class)
-	private String publicLinks;
+	private String publicLinksCheck;
 	
 	/** The following links. */
 	@JsonView(Views.Public.class)
-	private String followingLinks;
+	private String followingLinksCheck;
 	
 	/** The my links. */
 	@JsonView(Views.Public.class)
-	private String myLinks;
+	private String myLinksCheck;
 	
 	/** The search query. */
 	@JsonView(Views.Public.class)
@@ -79,6 +79,26 @@ public class UIObjectVO implements Serializable{
 	/** The type. */
 	@JsonView(Views.Public.class)
 	private String type;
+	
+	/** The shared. */
+	@JsonView(Views.Public.class)
+	private String shared;
+	
+	/** The match case check. */
+	@JsonView(Views.Public.class)
+	private String matchCaseCheck;
+	
+	/** The match word check. */
+	@JsonView(Views.Public.class)
+	private String matchWordCheck;
+	
+	/** The and condition radio. */
+	@JsonView(Views.Public.class)
+	private String andConditionRadio;
+	
+	/** The or condition radio. */
+	@JsonView(Views.Public.class)
+	private String orConditionRadio;
 	
 	/** The keywords. */
 	@JsonView(Views.Public.class)
@@ -218,59 +238,7 @@ public class UIObjectVO implements Serializable{
 		this.userLinks = userLinks;
 	}
 
-	/**
-	 * Gets the public links.
-	 *
-	 * @return the public links
-	 */
-	public String getPublicLinks() {
-		return publicLinks;
-	}
-
-	/**
-	 * Sets the public links.
-	 *
-	 * @param publicLinks the new public links
-	 */
-	public void setPublicLinks(String publicLinks) {
-		this.publicLinks = publicLinks;
-	}
-
-	/**
-	 * Gets the following links.
-	 *
-	 * @return the following links
-	 */
-	public String getFollowingLinks() {
-		return followingLinks;
-	}
-
-	/**
-	 * Sets the following links.
-	 *
-	 * @param followingLinks the new following links
-	 */
-	public void setFollowingLinks(String followingLinks) {
-		this.followingLinks = followingLinks;
-	}
-
-	/**
-	 * Gets the my links.
-	 *
-	 * @return the my links
-	 */
-	public String getMyLinks() {
-		return myLinks;
-	}
-
-	/**
-	 * Sets the my links.
-	 *
-	 * @param myLinks the new my links
-	 */
-	public void setMyLinks(String myLinks) {
-		this.myLinks = myLinks;
-	}
+	
 
 	/**
 	 * Gets the search query.
@@ -432,6 +400,150 @@ public class UIObjectVO implements Serializable{
 	 */
 	public void setSearchUser(String searchUser) {
 		this.searchUser = searchUser;
+	}
+
+	/**
+	 * Gets the shared.
+	 *
+	 * @return the shared
+	 */
+	public String getShared() {
+		return shared;
+	}
+
+	/**
+	 * Sets the shared.
+	 *
+	 * @param shared the new shared
+	 */
+	public void setShared(String shared) {
+		this.shared = shared;
+	}
+
+	/**
+	 * Gets the public links check.
+	 *
+	 * @return the public links check
+	 */
+	public String getPublicLinksCheck() {
+		return publicLinksCheck;
+	}
+
+	/**
+	 * Sets the public links check.
+	 *
+	 * @param publicLinksCheck the new public links check
+	 */
+	public void setPublicLinksCheck(String publicLinksCheck) {
+		this.publicLinksCheck = publicLinksCheck;
+	}
+
+	/**
+	 * Gets the following links check.
+	 *
+	 * @return the following links check
+	 */
+	public String getFollowingLinksCheck() {
+		return followingLinksCheck;
+	}
+
+	/**
+	 * Sets the following links check.
+	 *
+	 * @param followingLinksCheck the new following links check
+	 */
+	public void setFollowingLinksCheck(String followingLinksCheck) {
+		this.followingLinksCheck = followingLinksCheck;
+	}
+
+	/**
+	 * Gets the my links check.
+	 *
+	 * @return the my links check
+	 */
+	public String getMyLinksCheck() {
+		return myLinksCheck;
+	}
+
+	/**
+	 * Sets the my links check.
+	 *
+	 * @param myLinksCheck the new my links check
+	 */
+	public void setMyLinksCheck(String myLinksCheck) {
+		this.myLinksCheck = myLinksCheck;
+	}
+
+	/**
+	 * Gets the match case check.
+	 *
+	 * @return the match case check
+	 */
+	public String getMatchCaseCheck() {
+		return matchCaseCheck;
+	}
+
+	/**
+	 * Sets the match case check.
+	 *
+	 * @param matchCaseCheck the new match case check
+	 */
+	public void setMatchCaseCheck(String matchCaseCheck) {
+		this.matchCaseCheck = matchCaseCheck;
+	}
+
+	/**
+	 * Gets the match word check.
+	 *
+	 * @return the match word check
+	 */
+	public String getMatchWordCheck() {
+		return matchWordCheck;
+	}
+
+	/**
+	 * Sets the match word check.
+	 *
+	 * @param matchWordCheck the new match word check
+	 */
+	public void setMatchWordCheck(String matchWordCheck) {
+		this.matchWordCheck = matchWordCheck;
+	}
+
+	/**
+	 * Gets the and condition radio.
+	 *
+	 * @return the and condition radio
+	 */
+	public String getAndConditionRadio() {
+		return andConditionRadio;
+	}
+
+	/**
+	 * Sets the and condition radio.
+	 *
+	 * @param andConditionRadio the new and condition radio
+	 */
+	public void setAndConditionRadio(String andConditionRadio) {
+		this.andConditionRadio = andConditionRadio;
+	}
+
+	/**
+	 * Gets the or condition radio.
+	 *
+	 * @return the or condition radio
+	 */
+	public String getOrConditionRadio() {
+		return orConditionRadio;
+	}
+
+	/**
+	 * Sets the or condition radio.
+	 *
+	 * @param orConditionRadio the new or condition radio
+	 */
+	public void setOrConditionRadio(String orConditionRadio) {
+		this.orConditionRadio = orConditionRadio;
 	}
 
 	
