@@ -92,13 +92,9 @@ public class UIObjectVO implements Serializable{
 	@JsonView(Views.Public.class)
 	private String matchWordCheck;
 	
-	/** The and condition radio. */
+	/** The advanced search condition. */
 	@JsonView(Views.Public.class)
-	private String andConditionRadio;
-	
-	/** The or condition radio. */
-	@JsonView(Views.Public.class)
-	private String orConditionRadio;
+	private String advancedSearchCondition;
 	
 	/** The keywords. */
 	@JsonView(Views.Public.class)
@@ -511,39 +507,21 @@ public class UIObjectVO implements Serializable{
 	}
 
 	/**
-	 * Gets the and condition radio.
+	 * Gets the advanced search condition.
 	 *
-	 * @return the and condition radio
+	 * @return the advanced search condition
 	 */
-	public String getAndConditionRadio() {
-		return andConditionRadio;
+	public String getAdvancedSearchCondition() {
+		return advancedSearchCondition;
 	}
 
 	/**
-	 * Sets the and condition radio.
+	 * Sets the advanced search condition.
 	 *
-	 * @param andConditionRadio the new and condition radio
+	 * @param advancedSearchCondition the new advanced search condition
 	 */
-	public void setAndConditionRadio(String andConditionRadio) {
-		this.andConditionRadio = andConditionRadio;
-	}
-
-	/**
-	 * Gets the or condition radio.
-	 *
-	 * @return the or condition radio
-	 */
-	public String getOrConditionRadio() {
-		return orConditionRadio;
-	}
-
-	/**
-	 * Sets the or condition radio.
-	 *
-	 * @param orConditionRadio the new or condition radio
-	 */
-	public void setOrConditionRadio(String orConditionRadio) {
-		this.orConditionRadio = orConditionRadio;
+	public void setAdvancedSearchCondition(String advancedSearchCondition) {
+		this.advancedSearchCondition = advancedSearchCondition;
 	}
 
 	
